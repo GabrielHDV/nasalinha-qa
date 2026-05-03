@@ -3,33 +3,32 @@
 **Caso de Teste:** CT-008
 **Severidade:** Crítico
 
-## Localização do Erro
-Backend — auth.controller.js (função resetPassword)
-
-## Passos para Reproduzir
-1. Ir em "Esqueci minha senha" na tela de login
+## Caso
+Fiz o fluxo completo de reset de senha com três usuários diferentes
+(lucas, maria e pedro). Em todos os casos o sistema enviou o e-mail,
+o link funcionou, a tela de redefinição aceitou a nova senha e exibiu
+mensagem de sucesso. Mas ao tentar logar com a nova senha, retornou
+"Credenciais inválidas". A senha antiga continuou funcionando normalmente.
 2. Informar pedro@example.com
 3. Clicar no link que chega no Mailtrap
 4. Digitar nova senha e confirmar
-5. Tentar logar com a nova senha
-6. Tentar logar com senha123 (antiga)
+5. Tentar logar com a nova senha — falha
+6. Tentar logar com senha123 (antiga) — funciona
 
-## Resultado Esperado
+## O que era esperado
 A nova senha funcionar e a antiga ser bloqueada após o reset.
 
-## Resultado Atual
-Login com a nova senha retorna "Credenciais inválidas".
-A senha antiga continua funcionando normalmente.
-O sistema exibiu mensagem de sucesso mesmo sem salvar a nova senha.
-
-## Análise de Causa Raiz
-Em auth.controller.js, a função resetPassword() gera o hash
-da nova senha mas não inclui o campo password na query de
-atualização do banco:
+## O que encontrei no código
+Em auth.controller.js, a função de reset gera o hash da nova senha
+mas não salva no banco. A query de atualização só muda o updatedAt:
 
 UPDATE "users" SET "updatedAt" = $1
 
 Faltou incluir: password = hashedPassword
+
+## Impacto
+O usuário não consegue recuperar o acesso à conta mesmo seguindo
+todos os passos corretamente. A funcionalidade existe mas não funciona.
 
 ## Evidências
 - evidencia01.png — tela de esqueci minha senha
