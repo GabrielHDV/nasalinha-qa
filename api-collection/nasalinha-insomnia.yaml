@@ -1,0 +1,615 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: NaSalinha QA
+meta:
+  id: wrk_dde0a7a4915d4d278994d47abac7e5a2
+  created: 1777842251066
+  modified: 1777842251066
+  description: ""
+collection:
+  - url: "{{ base_url }}/auth/login"
+    name: CT-001 — Login válido
+    meta:
+      id: req_2af3fc452ab94cc19d10420432e4df37
+      created: 1777842650404
+      modified: 1777847473161
+      isPrivate: false
+      description: ""
+      sortKey: -1777843033934
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "email": "lucas@example.com",
+          "password": "senha123"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ base_url }}/auth/login"
+    name: CT-002 — Login email maiúsculo
+    meta:
+      id: req_f53241855969434c8e4d6f5446415a66
+      created: 1777843034034
+      modified: 1777846944949
+      isPrivate: false
+      description: ""
+      sortKey: -1777843034034
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "email": "LUCAS@EXAMPLE.COM",
+          "password": "senha123"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ base_url }}/auth/login"
+    name: CT-003 — Login senha errada
+    meta:
+      id: req_c1d03e1571b9484f89085887ec8843ff
+      created: 1777843284279
+      modified: 1777846958913
+      isPrivate: false
+      description: ""
+      sortKey: -1777843284279
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "email": "lucas@example.com",
+          "password": "senhaerrada"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ base_url }}/auth/login"
+    name: CT-004 — Login espaço na senha
+    meta:
+      id: req_7ba8ca9a8f524972853d7734a046ace8
+      created: 1777843399541
+      modified: 1777846980049
+      isPrivate: false
+      description: ""
+      sortKey: -1777843399541
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "email": "lucas@example.com",
+          "password": " senha123"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ base_url }}/auth/register"
+    name: CT-005 — Registro como ADMIN
+    meta:
+      id: req_264214d2e7a84bf49cdd40a4adafaa35
+      created: 1777843845068
+      modified: 1777846995169
+      isPrivate: false
+      description: ""
+      sortKey: -1777843845068
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "name": "Invasor",
+          "email": "invasor@teste.com",
+          "password": "senha123",
+          "role": "ADMIN"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ base_url }}/users"
+    name: CT-007 — MEMBER acessa rota ADMIN
+    meta:
+      id: req_ebee3646d6384e21b9e40b803fcb48e4
+      created: 1777844489646
+      modified: 1777847136162
+      isPrivate: false
+      description: ""
+      sortKey: -1777844489646
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    authentication:
+      type: bearer
+      token: "{{ token }}"
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ base_url }}/checkins"
+    name: CT-012 — Check-in com PDF
+    meta:
+      id: req_257860defdfb4b01abe7935aea5a242a
+      created: 1777845211843
+      modified: 1777853329387
+      isPrivate: false
+      description: ""
+      sortKey: -1777845971003.5
+    method: POST
+    body:
+      mimeType: multipart/form-data
+      params:
+        - name: photo
+          value: ""
+          description: ""
+          disabled: false
+          fileName: /home/gread/teste.pdf
+          type: file
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    authentication:
+      type: bearer
+      token: "{{ token }}"
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ base_url }}/checkins"
+    name: CT-013 — Check-in arquivo vazio
+    meta:
+      id: req_c8aa4f0913364f9ead212b975fc864cc
+      created: 1777846224057
+      modified: 1777847285535
+      isPrivate: false
+      description: ""
+      sortKey: -1777846224057
+    method: POST
+    body:
+      mimeType: multipart/form-data
+      params:
+        - name: photo
+          value: ""
+          description: ""
+          disabled: false
+          fileName: /home/gread/foto_vazia.jpg
+          type: file
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    authentication:
+      type: bearer
+      token: "{{ token }}"
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ base_url }}/users/me"
+    name: CT-006 — Acesso sem token
+    meta:
+      id: req_74a380ca31a543a78362c9dad595f039
+      created: 1777847487534
+      modified: 1777847581193
+      isPrivate: false
+      description: ""
+      sortKey: -1777844167357
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    authentication:
+      type: none
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ base_url }}/checkins"
+    name: CT-010 — Check-in com foto válida
+    meta:
+      id: req_2643a7e01cdf470ca05e369594b9e877
+      created: 1777847601988
+      modified: 1777847743862
+      isPrivate: false
+      description: ""
+      sortKey: -1777844850744.5
+    method: POST
+    body:
+      mimeType: multipart/form-data
+      params:
+        - name: photo
+          value: ""
+          description: ""
+          disabled: false
+          fileName: /home/gread/Downloads/postgis.webp
+          type: file
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    authentication:
+      type: bearer
+      token: "{{ token }}"
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ base_url }}/checkins"
+    name: CT-011 — Check-in sem foto
+    meta:
+      id: req_7562d64b75674c21b1a58f93015ede09
+      created: 1777847779601
+      modified: 1777847868062
+      isPrivate: false
+      description: ""
+      sortKey: -1777845717950
+    method: POST
+    body:
+      mimeType: multipart/form-data
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    authentication:
+      type: bearer
+      token: "{{ token }}"
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ base_url }}/auth/forgot-password"
+    name: CT-008.1 — Reset de senha (solicitar e-mail)
+    meta:
+      id: req_0373d7786b2c424dbb6c7fce2fa1cdeb
+      created: 1777847980704
+      modified: 1777848092072
+      isPrivate: false
+      description: ""
+      sortKey: -1777844670195.25
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "email": "pedro@example.com"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ base_url }}/auth/reset-password"
+    name: CT-008.2 — Reset de senha (confirmar nova senha)
+    meta:
+      id: req_631331b24264459a89dfa7148a6f0b9c
+      created: 1777848346142
+      modified: 1777848409059
+      isPrivate: false
+      description: ""
+      sortKey: -1777844760469.875
+    method: POST
+    body:
+      mimeType: application/json
+      text: >-
+        {
+          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5M2NjN2VhZS04MGNlLTRhYmUtOWEzZi0zYTVjODFiZmM4NzUiLCJwdXJwb3NlIjoicmVzZXQiLCJpYXQiOjE3Nzc4NDgwOTQsImV4cCI6MTc3Nzg1MTY5NH0.X6HoDb-U5AYh3gp7ZaWQITDph_BIdp8de2A4Fx7Eu90",
+          "newPassword": "novaSenha456"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ base_url }}/checkins/28382b4d-5b9c-4a98-ac52-238debc63f39"
+    name: CT-015 — MEMBER deletar check-in de outro usuário
+    meta:
+      id: req_b336f1b825eb4cb9932f7beecc188098
+      created: 1777850815866
+      modified: 1777850960849
+      isPrivate: false
+      description: ""
+      sortKey: -1777850815866
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    authentication:
+      type: bearer
+      token: "{{ token }}"
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ base_url }}/rankings"
+    name: CT-017 — Pontos somados após check-in
+    meta:
+      id: req_df73b558003b44f68acf51f20ab0cbfb
+      created: 1777851039206
+      modified: 1777851072351
+      isPrivate: false
+      description: ""
+      sortKey: -1777851039206
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    authentication:
+      type: bearer
+      token: "{{ token }}"
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ base_url }}/auth/login"
+    name: CT-019.1 — Login como ADMIN
+    meta:
+      id: req_c93930e1d9ec47fc9f43c055729fec44
+      created: 1777851264761
+      modified: 1777851358390
+      isPrivate: false
+      description: ""
+      sortKey: -1777851264761
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "email": "admin@nasalinha.com",
+          "password": "senha123"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ base_url }}/checkins/8ef167ea-e2a7-462d-8bd0-3e450e4f1675"
+    name: CT-019.2 — DELETE check-in como ADMIN
+    meta:
+      id: req_891e6b43099a4131aee38435d0ddb517
+      created: 1777851473957
+      modified: 1777851522271
+      isPrivate: false
+      description: ""
+      sortKey: -1777851473957
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    authentication:
+      type: bearer
+      token: "{{ token }}"
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ base_url }}/rankings"
+    name: CT-018 — Ranking ordenado
+    meta:
+      id: req_1b2b7d2a11814a4ab7c1e5bee3eecf4d
+      created: 1777853292634
+      modified: 1777853307300
+      isPrivate: false
+      description: ""
+      sortKey: -1777851151983.5
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    authentication:
+      type: bearer
+      token: "{{ token }}"
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ base_url }}/checkins"
+    name: CT-014 — Dois check-ins no mesmo dia
+    meta:
+      id: req_290fd8b284594899b734a3c807614310
+      created: 1777853357341
+      modified: 1777853363881
+      isPrivate: false
+      description: ""
+      sortKey: -1777848519961.5
+    method: POST
+    body:
+      mimeType: multipart/form-data
+      params:
+        - name: photo
+          value: ""
+          description: ""
+          disabled: false
+          fileName: /home/gread/Downloads/postgis.webp
+          type: file
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    authentication:
+      type: bearer
+      token: "{{ token }}"
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_88a00f0229a6efdc6531cc7fd4d57586242cad6b
+    created: 1777842251119
+    modified: 1777842251119
+environments:
+  name: Base Environment
+  meta:
+    id: env_88a00f0229a6efdc6531cc7fd4d57586242cad6b
+    created: 1777842251108
+    modified: 1777851454216
+    isPrivate: false
+  data:
+    base_url: http://localhost:5001/api
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZGI4OTkyNC0zMGY5LTQ5MWYtODcxMy1iNzRmOWExMzQyZTgiLCJpYXQiOjE3Nzc4NTEzNjAsImV4cCI6MTc3Nzg1NDk2MH0.7Qc1zWYCRb_LIemqRtHOC-dvnf3NeUSv3410dKf23PU
