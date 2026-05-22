@@ -119,6 +119,10 @@ O objetivo do projeto foi validar o comportamento das funcionalidades principais
 ```bash
 .
 ├── README.md
+│
+├── assets
+│   └── kanban-board.png
+│
 ├── docs
 │   ├── casos-de-teste.md
 │   ├── evidencias
@@ -310,6 +314,29 @@ O relatório consolidado da auditoria contém:
 | API Collection | Collection exportada do Insomnia |
 
 ---
+# 📋 Kanban
+
+Durante a execução da auditoria foi utilizado um quadro Kanban para acompanhamento do fluxo de testes, organização dos bug reports e rastreabilidade das tarefas.
+
+O board foi dividido nas etapas:
+
+- Ready
+- In Progress
+- Done
+
+Incluindo:
+
+- Casos de teste
+- Bug reports
+- Organização das evidências
+- Revisão da documentação
+- Entrega final
+
+---
+
+<p align="center">
+  <img src="./assets/kanban-board.png" width="100%"/>
+</p>
 
 # 🔍 Estratégia de QA
 
