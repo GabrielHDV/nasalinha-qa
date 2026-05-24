@@ -173,10 +173,11 @@ CLOUDINARY_CLOUD_NAME=
 CLOUDINARY_API_KEY=
 CLOUDINARY_API_SECRET=
 
-MAILTRAP_USER=
-MAILTRAP_PASS=
+EMAIL_HOST=
+EMAIL_PORT=
+EMAIL_USER=
+EMAIL_PASSWORD=
 ```
-
 ---
 
 ## 3️⃣ Subir os containers Docker
@@ -349,22 +350,6 @@ A auditoria foi realizada seguindo o fluxo:
 5. Análise dos problemas encontrados
 6. Testes de regressão
 7. Consolidação dos resultados
-
----
-
-# 📸 Evidências
-
-As evidências dos testes estão localizadas em:
-
-```bash
-/docs/evidencias
-```
-
-Incluindo:
-- Prints de erros
-- Capturas do Insomnia
-- Logs da aplicação
-- Evidências de comportamento inconsistente
 
 ---
 

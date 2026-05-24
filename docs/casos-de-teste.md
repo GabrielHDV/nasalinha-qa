@@ -176,7 +176,7 @@ http://localhost:5001
 **Obtido:** Status 200, porém a nova senha não foi salva no banco.  
 **Status:** FAIL
 
-**Severidade:** ALTO
+**Severidade:** CRÍTICO
 
 ---
 
@@ -349,7 +349,7 @@ http://localhost:5001
 **Obtido:** Admin apareceu no ranking com 10 pontos.  
 **Status:** FAIL
 
-**Severidade:** CRÍTICO
+**Severidade:** ALTO
 
 ---
 
